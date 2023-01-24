@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+  {% block title %}
+    {{ title }}
+  {% endblock %}
+{% block content %}
+    <main> 
+      <!-- класс py-5 создает отступы сверху и снизу блока -->
+      <div class="container py-5">
+        {% for post in posts  %}
+        <article>
+          <ul>
+            <li>
+              Автор: {{ post.author }}
+            </li>
+            <li>
+              Дата публикации: {{ post.pub_date }}
+            </li>
+          </ul> 
+          <p>
+            {{post.text}}
+          </p>
+            {% if post.group  %}
+            <a href="{% url 'posts:group_posts' post.group.slug  %}">все записи группы</a>
+            {%endif%}
+        </article>
+        <hr>
+        {%endfor%}
+        <!-- под последним постом нет линии -->
+      </div>  
+    </main>
+    <!-- Использованы классы бустрапа: -->
+    <!-- border-top: создаёт тонкую линию сверху блока -->
+    <!-- text-center: выравнивает текстовые блоки внутри блока по центру -->
+    <!-- py-3: контент внутри размещается с отступом сверху и снизу -->         
+    {%endblock content%}
