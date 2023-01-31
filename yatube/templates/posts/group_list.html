@@ -4,11 +4,10 @@
   {% endblock title %}
   
   {% block content %}    
-  <main>
-      <div class="container">
+  
         <h1>Записи сообщества {{ group.title }}</h1>
         <p>
-          {{ group.description }}
+          {{ group.description | linebreaksbr }}
         </p>
         {% for post in posts  %}
         <article>
@@ -21,13 +20,12 @@
             </li>
           </ul>      
           <p>
-            {{ post.text }}
+            {{ post.text | linebreaksbr }}
           </p>         
         </article>
         <hr>
         {%endfor%}
         <!-- под последним постом нет линии -->
-      </div>  
-    </main>
+      
     {% endblock content %}
   

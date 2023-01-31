@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+
 from django.db import models
 
 User = get_user_model()
@@ -25,4 +26,4 @@ class Post(models.Model):
         Group, on_delete=models.CASCADE, blank=True, null=True)
     
     class Meta:
-        ordering = ['-pub_date'][:10]
+        ordering = ['-pub_date']
