@@ -1,12 +1,8 @@
 {% extends "base.html" %}
-{% load static %}
   {% block title %}
     {{ title }}
   {% endblock %}
 {% block content %}
-    <main> 
-      <!-- класс py-5 создает отступы сверху и снизу блока -->
-      <div class="container py-5">
         {% for post in posts  %}
         <article>
           <ul>
@@ -21,14 +17,14 @@
             {{post.text}}
           </p>
             {% if post.group  %}
-            <a href="{% url 'posts:group_posts' post.group.slug  %}">все записи группы</a>
+            <a href="{% url 'posts:group_posts' post.group.slug  %}">все записи группы {{ post.group.title }}</a>
             {%endif%}
         </article>
+        {% if not forloop.last  %}
         <hr>
-        {%endfor%}
+        {% endif %}
+        {% endfor %}
         <!-- под последним постом нет линии -->
-      </div>  
-    </main>
     <!-- Использованы классы бустрапа: -->
     <!-- border-top: создаёт тонкую линию сверху блока -->
     <!-- text-center: выравнивает текстовые блоки внутри блока по центру -->

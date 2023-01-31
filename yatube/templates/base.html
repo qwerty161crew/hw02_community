@@ -20,9 +20,13 @@
     <header>
       {%include "includes/header.html"%}
     </header>
-    {% block content %}
-        content
-    {% endblock content %}
+    <main>
+      <div class="container">
+        {% block content %}
+          content
+        {% endblock content %}
+      </div>  
+    </main>
     <footer class="border-top text-center py-3">
         {% include "includes/footer.html"%}
       </footer>
