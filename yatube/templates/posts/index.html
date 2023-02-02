@@ -1,32 +1,27 @@
 {% extends "base.html" %}
-  {% block title %}
-    {{ title }}
-  {% endblock %}
+{% block title %}
+  {{ title }}
+{% endblock %}
 {% block content %}
-        {% for post in posts  %}
-        <article>
-          <ul>
-            <li>
-              Автор: {{ post.author }}
-            </li>
-            <li>
-              Дата публикации: {{ post.pub_date }}
-            </li>
-          </ul> 
-          <p>
-            {{post.text}}
-          </p>
-            {% if post.group  %}
-            <a href="{% url 'posts:group_posts' post.group.slug  %}">все записи группы {{ post.group.title }}</a>
-            {%endif%}
-        </article>
+      {% for post in posts  %}
+          <article>
+            <ul>
+              <li>
+                Автор: {{ post.author }}
+              </li>
+              <li>
+                Дата публикации: {{ post.pub_date }}
+              </li>
+            </ul> 
+            <p>
+              {{ post.text  | linebreaksbr }}
+            </p>
+              {% if post.group  %}
+              <a href="{% url 'posts:group_posts' post.group.slug  %}">все записи группы {{ post.group.title }}</a>
+              {%endif%}
+          </article>
         {% if not forloop.last  %}
-        <hr>
+          <hr>
         {% endif %}
-        {% endfor %}
-        <!-- под последним постом нет линии -->
-    <!-- Использованы классы бустрапа: -->
-    <!-- border-top: создаёт тонкую линию сверху блока -->
-    <!-- text-center: выравнивает текстовые блоки внутри блока по центру -->
-    <!-- py-3: контент внутри размещается с отступом сверху и снизу -->         
+        {% endfor %}         
     {%endblock content%}
