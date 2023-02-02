@@ -5,27 +5,27 @@
   
 {% block content %}    
   
-        <h1>Записи сообщества {{ group.title }}</h1>
-        <p>
-          {{ group.description | linebreaksbr }}
-        </p>
-        {% for post in posts  %}
-          <article>
-            <ul>
-              <li>
-                Автор: {{ post.author.get_full_name }}
-              </li>
-              <li>
-                Дата публикации: {{ post.pub_date }}
-              </li>
-            </ul>      
-            <p>
-              {{ post.text | linebreaksbr }}
-            </p>         
-            {% if not forloop.last  %}
-              <hr>
-            {% endif %}
-          </article>
-        {%endfor%}
+  <h1>Записи сообщества {{ group.title }}</h1>
+  <p>
+    {{ group.description | linebreaksbr }}
+  </p>
+    {% for post in posts  %}
+  <article>
+    <ul>
+      <li>
+        Автор: {{ post.author.get_full_name }}
+      </li>
+      <li>
+        Дата публикации: {{ post.pub_date }}
+      </li>
+    </ul>      
+    <p>
+    {{ post.text | linebreaksbr }}
+    </p>         
+    {% if not forloop.last  %}
+      <hr>
+    {% endif %}
+  </article>
+    {%endfor%}
         <!-- под последним постом нет линии -->
 {% endblock content %}
