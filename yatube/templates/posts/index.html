@@ -12,7 +12,7 @@
         <li>
             Дата публикации: {{ post.pub_date }}
         </li>
-        </ul> 
+      </ul> 
           <p>
             {{ post.text  | linebreaksbr }}
           </p>
@@ -20,8 +20,8 @@
             <a href="{% url 'posts:group_posts' post.group.slug  %}">все записи группы {{ post.group.title }}</a>
           {%endif%}
     </article>
-      {% if not forloop.last  %}
-        <hr>
-      {% endif %}
+    {% if not forloop.last  %}
+      <hr>
+    {% endif %}
 {% endfor %}         
 {%endblock content%}
