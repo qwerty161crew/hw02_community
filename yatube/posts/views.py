@@ -4,6 +4,9 @@ from django.shortcuts import get_object_or_404, render
 # Create your views here.
 from .models import Post, Group
 
+from django.views.generic.base import TemplateView
+
+
 
 def index(request):
     posts = Post.objects.all()
@@ -24,3 +27,4 @@ def group_posts(request, slug):
         'posts': posts,
     }
     return render(request, 'posts/group_list.html', context)
+
